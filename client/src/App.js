@@ -1,4 +1,5 @@
 import React from 'react';
+import SendMails from "./components/SendMails";
 import './App.css';
 
 function App() {
@@ -15,6 +16,7 @@ function App() {
           Learn React
         </a>
       </header>
+      <SendMails />
     </div>
   );
 }

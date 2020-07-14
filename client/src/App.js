@@ -5,7 +5,7 @@ import './App.css';
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
+      {/* <header className="App-header">
        
         <a
           className="App-link"
@@ -15,7 +15,7 @@ function App() {
         >
           Learn React
         </a>
-      </header>
+      </header> */}
       <SendMails />
     </div>
   );

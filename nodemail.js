@@ -7,7 +7,7 @@ const { Thanks } = require("./thanks_template");
 
 //Step1 
 const sendEmail = (to, name, type) => {
-    const smtpTransport = nodeMailer.createTransport( {
+    const smtpTransport = nodeMailer.createTransport({
         // service: "Gmail",
         host: 'smtp.gmail.com',
         auth: {
@@ -16,6 +16,13 @@ const sendEmail = (to, name, type) => {
         }
     });
     // console.log(smtpTransport, "smtpInfo")
+    smtpTransport.verify((error, success) => {
+        if (error) {
+            console.log(error);
+        } else {
+            console.log('Server is ready to take messages');
+        }
+    });
 
     const mail = getEmailData(to, name, type);
     console.log()
@@ -60,7 +67,7 @@ const getEmailData = (to, name, template) => {
                 subject: `Hello ${name} - Default option`,
                 html: Hello()
             }
-            break; 
+            break;
     }
     return mailData;
 }

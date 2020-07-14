@@ -13,6 +13,7 @@ const Hello = data => {
                 <br />
                 <div>Hello </div>
                 <br />
+                <p>Welcome to your oline contactless food ordering system. </p>
                 <br />
              </body>
      

@@ -13,6 +13,7 @@ const Thanks = data => {
                 <br />
                 <div>Thanks </div>
                 <br />
+                <p>Thanks for choosing to place an order wwith us. Hoping to serve you again.</p>
                 <br />
              </body>
      

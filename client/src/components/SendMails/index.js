@@ -50,9 +50,9 @@ function SendEmails() {
             //name: name
             name, email, message
         }
-        console.log(dataSubmit);
+        console.log("dataSubmit", dataSubmit);
         //Send data to Backend 
-        axios.post("/api/sendMail", dataSubmit);
+        axios.post("http://localhost:5001/api/sendMail", dataSubmit);
     }
     return (
         <Container>

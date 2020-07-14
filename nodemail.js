@@ -1,19 +1,24 @@
-const nodemailer = require("nodemailer");
+const nodeMailer = require("nodemailer");
 require("dotenv").config();
+
+//Load Templates 
+const { Hello } = require("./hello_template");
+const { Thanks } = require("./thanks_template");
 
 //Step1 
 const sendEmail = (to, name, type) => {
-    const smtpTransport = nodeMailer.createTransport({
-        service: "gmail",
+    const smtpTransport = nodeMailer.createTransport( {
+        // service: "Gmail",
+        host: 'smtp.gmail.com',
         auth: {
             user: process.env.REACT_APP_GMAIL,
             pass: process.env.REACT_APP_PASSWORD
         }
     });
-
+    // console.log(smtpTransport, "smtpInfo")
 
     const mail = getEmailData(to, name, type);
-
+    console.log()
     //Step 3 - Send email using NodeMailer Transport 
 
     smtpTransport.sendMail(mail, function (err, response) {
@@ -30,26 +35,32 @@ const sendEmail = (to, name, type) => {
 //STEP 2 - setting up email content 
 const getEmailData = (to, name, template) => {
     let mailData = null;
-    console.log("getEmailData", to, name, template)
+
     switch (template) {
-        case "Hello":
+        case "hello":
             mailData = {
                 from: "Spongebob Square Pants<sponge@gmail.com>",
-                to,
+                to: `${to}`,
                 subject: `Hello ${name}`,
                 html: Hello()
             }
             break;
-        case "Thanks":
+        case "thanks":
             mailData = {
                 from: "Spongebob Square Pants<sponge@gmail.com>",
-                to,
+                to: `${to}`,
                 subject: `Hello ${name}`,
                 html: Thanks()
             }
             break;
         default:
-            mailData;
+            mailData = {
+                from: "Spongebob Square Pants<sponge@gmail.com>",
+                to: `${to}`,
+                subject: `Hello ${name} - Default option`,
+                html: Hello()
+            }
+            break; 
     }
     return mailData;
 }

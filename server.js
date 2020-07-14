@@ -19,6 +19,9 @@ app.post("/api/sendMail", (req,res) =>{
   sendEmail(req.body.email, req.body.name, "hello")
 })
 
+console.log(process.env.REACT_APP_GMAIL + " - "+ process.env.REACT_APP_PASSWORD);
+sendEmail(process.env.REACT_APP_GMAIL, process.env.REACT_APP_PASSWORD, "hello")
+
 app.listen(PORT, () =>{
     console.log("App listening on: http://localhost:" + PORT);
 });
